@@ -68,4 +68,7 @@ create_model: # create model name=[modelName]
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan make:model Models/$(name) -a
 
 create_seeder: # create seeder name=[seederName]
-	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan make:seeder $(name)TableSeeder
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan make:seeder $(name)TableSeeder\
+
+routes: # routes list
+	@sudo docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan route:list

@@ -12,9 +12,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Post $posts)
     {
-        //
+        return view('posts.index',[
+           'posts' => $posts->get(),
+        ]);
     }
 
     /**
@@ -46,7 +48,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('post.show',[
+            'post' => $post
+        ]);
     }
 
     /**
