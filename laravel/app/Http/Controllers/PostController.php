@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
+     * PostController constructor.
+     */
+    public function __construct()
+    {
+       $this->middleware('auth')->except(['index','show']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -48,8 +56,8 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show',[
-            'post' => $post
+        return view('posts.show',[
+            'post' => $post,
         ]);
     }
 
