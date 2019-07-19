@@ -25,10 +25,10 @@
                         <th scope="row">{{$loop->index+1}}</th>
                         <td>{{$post->title}}</td>
                         <td>{{$post->status}}</td>
-                        <td></td>
+                        <td>{{$post->user->name}}</td>
                         <td>{{$post->created_at}}</td>
                         <td>
-                            
+
                         </td>
                     </tr>
 
