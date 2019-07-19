@@ -28,7 +28,7 @@
                         <td>{{$post->user->name}}</td>
                         <td>{{$post->created_at}}</td>
                         <td>
-
+                            <a href="{{route('posts.edit',[$post->slug])}}" class="btn">Edit</a>
                         </td>
                     </tr>
 
