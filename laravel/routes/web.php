@@ -18,7 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('posts','PostController')->only(['index','show']);
 
 Auth::routes();
-Route::prefix('admin')->name('admin.')->namespace('Admin')->group(function (){
+Route::prefix('admin')->middleware('auth')->name('admin.')->namespace('Admin')->group(function (){
     Route::resource('posts','PostController');
 });
 

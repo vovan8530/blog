@@ -4,17 +4,21 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Post $post
+     * @return View
      */
-    public function index()
+    public function index(Request $request, Post $posts):View
     {
-        //
+        return view('admin.posts.index',[
+            'posts' => $posts->with('user')->get(),
+        ]);
     }
 
     /**
