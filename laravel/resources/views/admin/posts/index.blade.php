@@ -24,7 +24,7 @@
                     <tr>
                         <th scope="row">{{$loop->index+1}}</th>
                         <td>{{$post->title}}</td>
-                        <td>{{$post->status}}</td>
+                        <td>{{$post->published_status}}</td>
                         <td>{{$post->user->name}}</td>
                         <td>{{$post->created_at}}</td>
                         <td>

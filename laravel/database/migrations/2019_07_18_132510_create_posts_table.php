@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->mediumText('body');
             $table->unsignedInteger('views')->default('0');
             $table->unsignedInteger('likes')->default('0');
-            $table->string('status');
+            $table->string('published_status');
             $table->unsignedInteger('user_id');
 
 
