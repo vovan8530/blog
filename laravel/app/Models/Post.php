@@ -3,29 +3,42 @@
 namespace App\Models;
 
 use App\Models\Traits\Pagination;
+use App\Models\Traits\Search;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class Post extends Model
 {
-    use Pagination;
+    use Pagination, Search;
+
+    private $searchFields = [
+        'title', 'body',
+    ];
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
-    public function user(){
+    /**
+     * @return BelongsTo
+     */
+    public function user():BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 
     /**
      * @param Request $request
-     * @return Post
+     * @return LengthAwarePaginator
      */
     public function getAll(Request $request):LengthAwarePaginator
     {
-        return $this->addPagination($this->query(),$request->query());
+
+        return $this->addPagination($this->addSearch($this->with('user'),
+            $request->query()),
+            $request->query());
     }
 }
