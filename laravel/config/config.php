@@ -4,5 +4,6 @@ return [
         'published_status' => [
             'published','hidden','canceled'
         ]
-    ]
+    ],
+    'perPage'=> 20
 ];

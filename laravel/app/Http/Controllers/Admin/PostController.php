@@ -11,15 +11,13 @@ class PostController extends Controller
 {
     /**
      * @param Request $request
-     * @param Post $post
+     * @param Post $posts
      * @return View
      */
     public function index(Request $request, Post $posts):View
     {
-//        dd($posts->with('user')->paginate());
-
         return view('admin.posts.index',[
-            'posts' => $posts->with('user')->paginate(),
+            'posts' => $posts->getAll($request),
         ]);
     }
 

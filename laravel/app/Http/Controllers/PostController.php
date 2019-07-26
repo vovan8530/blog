@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use phpDocumentor\Reflection\Types\Resource_;
+
 
 class PostController extends Controller
 {
 
     /**
+     * @param Request $request
      * @param Post $posts
      * @return View
      */
@@ -18,7 +19,7 @@ class PostController extends Controller
     {
 
         return view('posts.index',[
-            'posts' => $posts->get(),
+            'posts' =>  $posts->with('user')->get(),
         ]);
     }
 
