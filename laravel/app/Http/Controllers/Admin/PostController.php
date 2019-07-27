@@ -42,47 +42,34 @@ class PostController extends Controller
         //
     }
 
+
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @return \Illuminate\Contracts\View\Factory|View
      */
-    public function show($id)
+    public function edit(Post $post):View
     {
-        //
+        return view('admin.posts.edit',[
+            'post' => $post,
+            'published_status' => config('config.models.published_status'),
+        ]);
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function edit($id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $post->update($request->all());
+        return redirect()->route('admin.posts.edit',[$post->slug]);
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Post $post
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
         //
     }

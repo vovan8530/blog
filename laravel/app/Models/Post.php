@@ -22,6 +22,10 @@ class Post extends Model
         return 'slug';
     }
 
+    protected $fillable=[
+        'title','slug','published_status','body','view','likes','user_id'
+    ];
+
     /**
      * @return BelongsTo
      */
