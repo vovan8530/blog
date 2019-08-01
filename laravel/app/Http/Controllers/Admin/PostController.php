@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\View\View;
-use Illuminate\Support\Str;
+
 
 class PostController extends Controller
 {
@@ -39,17 +39,14 @@ class PostController extends Controller
      */
     public function store(Request $request, Post $post)
     {
-        $post->create(array_merge($request->all(),[
-            'slug' => Str::slug($request->title),
-            'user_id'=> auth()->user()->id,
-            ]));
+        $post->create($request->all());
         return redirect()->route('admin.posts.index');
     }
 
 
     /**
      * @param Post $post
-     * @return \Illuminate\Contracts\View\Factory|View
+     * @return View
      */
     public function edit(Post $post):View
     {
