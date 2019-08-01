@@ -68,9 +68,12 @@ class PostController extends Controller
 
     /**
      * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Post $post)
     {
-        //
+       $post->delete();
+       return redirect()->route('admin.posts.index');
     }
 }

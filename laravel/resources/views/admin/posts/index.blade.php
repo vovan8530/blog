@@ -42,9 +42,11 @@
                         <td>{{$post->created_at}}</td>
                         <td>
                             <a href="{{route('admin.posts.edit',[$post->slug])}}" class="btn">Edit</a>
-                        </td>
-                        <td>
-                            <a href="{{route('admin.posts.destroy',[$post->slug])}}" class="btn">Delete</a>
+                            <form action="{{route('admin.posts.destroy',[$post->slug])}}"  method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <button>Delete</button>
+                            </form>
                         </td>
                     </tr>
 
