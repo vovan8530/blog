@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                <div class="row">
+                    <div class="col-sm-10">
+                        <a href="{{route('admin.posts.index')}}"  class="btn btn-info">Back</a>
+                    </div>
+                </div>
                 <form action="{{route('admin.posts.store')}}" method="post">
                     @csrf
                     <div class="form-group row">
