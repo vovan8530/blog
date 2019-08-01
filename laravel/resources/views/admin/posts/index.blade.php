@@ -35,7 +35,7 @@
                 <tbody>
                 @foreach($posts as $post)
                     <tr>
-                        <th scope="row">{{$loop->index+1+($posts->count() * ($posts->currentPage()-1))}}</th>
+                        <th scope="row">{{$loop->index+1+($posts->perPage() * ($posts->currentPage()-1))}}</th>
                         <td>{{$post->title}}</td>
                         <td>{{$post->published_status}}</td>
                         <td>{{$post->user->name}}</td>
