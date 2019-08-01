@@ -20,8 +20,8 @@
                     </div>
                     <div class="form-group row">
                         <label for="title" class="col-sm-2 col-form-label">Body</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" id="body" name="body" rows="10">{{$post->body}}</textarea>
+                        <div class="col-sm-10 col-12">
+                            <textarea class="description"  name="body">{{$post->body}}</textarea>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -46,5 +46,6 @@
         </div>
     </div>
 
-
 @endsection
+
+

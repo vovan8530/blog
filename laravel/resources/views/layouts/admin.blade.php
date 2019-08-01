@@ -70,5 +70,19 @@
         @yield('content')
     </main>
 </div>
+
+<script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
+<script>
+    tinymce.init({
+        selector:'textarea.description',
+        width: 'auto',
+        height: 300,
+        plugins: [
+            'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+            'save table contextmenu directionality emoticons template paste textcolor'
+        ],
+    });
+</script>
 </body>
 </html>
