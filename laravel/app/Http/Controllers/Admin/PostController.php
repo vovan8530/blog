@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\View\View;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -22,24 +23,27 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
-    public function create()
+    public function create():View
     {
-        //
+        return view('admin.posts.create',[
+            'published_status' => config('config.models.published_status'),
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request, Post $post)
     {
-        //
+        $post->create(array_merge($request->all(),[
+            'slug' => Str::slug($request->title),
+            'user_id'=> auth()->user()->id,
+            ]));
+        return redirect()->route('admin.posts.index');
     }
 
 
