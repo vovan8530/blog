@@ -13,7 +13,9 @@ class PostObserver
     public function creating(Post $post)
     {
         $post->slug =Str::slug($post->title);
-        $post->user()->associate(auth()->user());
+        if(!isset($post->user_id)){
+            $post->user()->associate(auth()->user());
+        }
     }
 
     /**
