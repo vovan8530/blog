@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Picture;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
 
 class PictureController extends Controller
 {
@@ -33,9 +35,13 @@ class PictureController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Picture $picture)
     {
-        //
+        // storage/images
+        if($request->has('file')){
+            $picture->insertPicture($request->file('file'));
+        }
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -83,3 +89,4 @@ class PictureController extends Controller
         //
     }
 }
+
