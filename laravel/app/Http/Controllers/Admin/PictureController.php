@@ -11,13 +11,15 @@ use App\Http\Controllers\Controller;
 class PictureController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Picture $pictures
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request, Picture $pictures)
     {
-        //
+        return view('admin.pictures.index',[
+            'pictures' => $pictures->getAll( $request),
+        ]);
     }
 
     /**
@@ -41,7 +43,7 @@ class PictureController extends Controller
         if($request->has('file')){
             $picture->insertPicture($request->file('file'), $config);
         }
-        return redirect()->route('posts.index');
+        return redirect()->route('admin.pictures.index');
     }
 
 
