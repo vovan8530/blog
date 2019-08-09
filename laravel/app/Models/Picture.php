@@ -2,20 +2,29 @@
 
 namespace App\Models;
 
+use App\Services\Images\ImageConfig;
+use App\Services\Images\ImageProcessor;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
+
+
 
 class Picture extends Model
 {
-    const PICTURE_PATH = "storage/images/";
-
     protected $fillable=['path','thumbnail'];
 
-    public function insertPicture($file){
-        if($file->storeAs('public/images', $file->getClientOriginalName())){
+    public function insertPicture(UploadedFile $file, ImageConfig $config){
+
+        $imageProcessor= new ImageProcessor($config);
+
+        if($fileName = $imageProcessor->saveImage($file)){
+
+            $imageProcessor->saveThumbnail($fileName);
             $this->create([
-                'path' => static::PICTURE_PATH . $file->getClientOriginalName(),
-                'thumbnail' => static::PICTURE_PATH . $file->getClientOriginalName()
+                'path' => $config::getImageUrl().$fileName,
+                'thumbnail' => $config::getThumbnailUrl().$fileName,
             ]);
+
             return true;
         }
         return false;

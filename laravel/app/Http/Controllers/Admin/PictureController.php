@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Picture;
+use App\Services\Images\ImageConfig;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,19 +31,19 @@ class PictureController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Picture $picture
+     * @param ImageConfig $config
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request, Picture $picture)
+    public function store(Request $request, Picture $picture, ImageConfig $config)
     {
-        // storage/images
         if($request->has('file')){
-            $picture->insertPicture($request->file('file'));
+            $picture->insertPicture($request->file('file'), $config);
         }
         return redirect()->route('posts.index');
     }
+
 
     /**
      * Display the specified resource.
