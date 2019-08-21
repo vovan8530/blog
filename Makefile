@@ -76,6 +76,9 @@ routes: # routes list
 storage_link: # link images
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan storage:link
 
+create_middleware: # create middleware name=[middlewareName]
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel php artisan make:middleware $(name)Middleware
+
 
 
 tinker: # tinker
