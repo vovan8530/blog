@@ -228,4 +228,8 @@ return [
 
     ],
 
+    'roles' => [
+        'user','author','admin'
+    ]
+
 ];
