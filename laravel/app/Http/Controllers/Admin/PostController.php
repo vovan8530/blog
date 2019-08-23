@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CreatePostRequest;
+use App\Http\Transformers\PostTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
@@ -24,6 +25,18 @@ class PostController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @param Post $post
+     * @return PostTransformer
+     */
+    public function show(Request $request, Post $post){
+        return view('admin.posts.create',[
+            'published_status' => config('config.models.published_status'),
+            'post' => new PostTransformer($post),
+        ]);
+    }
+
+    /**
      * @return View
      */
     public function create():View
@@ -34,7 +47,7 @@ class PostController extends Controller
     }
 
     /**
-     * @param Request $request
+     * @param CreatePostRequest $request
      * @param Post $post
      * @return \Illuminate\Http\RedirectResponse
      */

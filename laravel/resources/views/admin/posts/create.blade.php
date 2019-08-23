@@ -4,6 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+{{--                {{ $post }}  from   Transformers--}}
                 <div class="row">
                     <div class="col-sm-10">
                         <a href="{{route('admin.posts.index')}}"  class="btn btn-info">Back</a>
