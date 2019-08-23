@@ -2,7 +2,9 @@
 
 namespace App\Observers;
 
+use App\Mail\PostCreated;
 use App\Models\Post;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class PostObserver
@@ -32,14 +34,11 @@ class PostObserver
      */
     public function created(Post $post)
     {
-        //
+        Mail::send(new PostCreated($post));
     }
 
     /**
-     * Handle the post "updated" event.
-     *
-     * @param  \App\Post  $post
-     * @return void
+     * @param Post $post
      */
     public function updated(Post $post)
     {
@@ -47,10 +46,7 @@ class PostObserver
     }
 
     /**
-     * Handle the post "deleted" event.
-     *
-     * @param  \App\Post  $post
-     * @return void
+     * @param Post $post
      */
     public function deleted(Post $post)
     {
@@ -58,10 +54,7 @@ class PostObserver
     }
 
     /**
-     * Handle the post "restored" event.
-     *
-     * @param  \App\Post  $post
-     * @return void
+     * @param Post $post
      */
     public function restored(Post $post)
     {
@@ -69,10 +62,7 @@ class PostObserver
     }
 
     /**
-     * Handle the post "force deleted" event.
-     *
-     * @param  \App\Post  $post
-     * @return void
+     * @param Post $post
      */
     public function forceDeleted(Post $post)
     {
