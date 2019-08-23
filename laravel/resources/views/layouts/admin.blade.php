@@ -27,6 +27,8 @@
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="{{route('admin.posts.index')}}">Posts</a>
+                    </li><li class="nav-item active">
+                        <a class="nav-link" href="{{route('admin.pictures.index')}}">Pictures</a>
                     </li>
                 </ul>
 
