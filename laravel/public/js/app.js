@@ -1891,6 +1891,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'AdminPicturesIndex',
   props: {
@@ -37197,9 +37198,9 @@ var render = function() {
           "div",
           { staticClass: "col-12 col-sm-6 col-md-4 col-lg-3 my-3" },
           [
-            _c("button", [_vm._v("Delete")]),
-            _vm._v(" "),
             _c("div", { staticClass: "card bg-dark text-white" }, [
+              _c("button", [_vm._v("Delete")]),
+              _vm._v(" "),
               _c("img", {
                 staticClass: "card-img",
                 attrs: { src: "/" + picture.thumbnail }

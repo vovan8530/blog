@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Facades\GetRickAndMortyApiData;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return mixed
      */
     public function index()
     {
-        return view('home');
+       return view('home');
+//        return GetRickAndMortyApiData::getCharacter();//test custom facade
     }
 }

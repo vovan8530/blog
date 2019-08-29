@@ -1,4 +1,6 @@
 <?php
+
+use App\Facades\GetApiData;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
 
 
 Route::get('/', 'HomeController@index')->name('home');
+//Route::get('/', function (){
+//    return GetApiData::getData(); test custom facade
+//})->name('home');
 Route::resource('posts','PostController')->only(['index','show']);
 Auth::routes();
 

@@ -1,5 +1,7 @@
 <?php
 
+use App\Services\GetApiData\GetRickAndMortyApiData;
+
 return [
 
     /*
@@ -175,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\GetApiDataProvider::class,   //custom provider
+
     ],
 
     /*
@@ -225,6 +229,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'GetRickAndMortyApiData' => App\Facades\GetRickAndMortyApiData::class,   // custom facade
 
     ],
 

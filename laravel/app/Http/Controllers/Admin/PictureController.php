@@ -82,14 +82,14 @@ class PictureController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Picture  $picture
-     * @return \Illuminate\Http\Response
+     * @param Picture $picture
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(Picture $picture)
     {
-        //
+//        $picture->delete();
+//        return redirect()->route('admin.pictures.index');
     }
 }
 
