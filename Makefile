@@ -2,7 +2,7 @@ include .env
 
 
 up: # create and start containers
-	@sudo docker-compose -f ${DOCKER_CONFIG} up -d
+	@docker-compose -f ${DOCKER_CONFIG} up -d
 
 down: # stop and destroy containers
 	@docker-compose -f ${DOCKER_CONFIG} down
@@ -41,7 +41,7 @@ database-dump: # dump database
 	@docker-compose -f ${DOCKER_CONFIG} exec db mysqldump ${DOCKER_DATABASE} -u${DOCKER_USERNAME} -p${DOCKER_PASSWORD}
 
 vendor: # composer install
-	@sudo docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app composer install
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app composer install
 
 node_modules: # npm install
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel node npm install
@@ -50,7 +50,7 @@ watch: # npm run watch
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel node npm run watch
 
 key: # gen application key
-	@sudo docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan key:generate
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan key:generate
 
 fresh: # refresh the database and run all database seeds
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan migrate:fresh --seed
@@ -71,7 +71,7 @@ create_seeder: # create seeder name=[seederName]
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan make:seeder $(name)TableSeeder
 
 routes: # routes list
-	@sudo docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan route:list
+	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan route:list
 
 storage_link: # link images
 	@docker-compose -f ${DOCKER_CONFIG} exec -u www -w /www/laravel app php artisan storage:link

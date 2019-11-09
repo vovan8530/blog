@@ -1,6 +1,7 @@
 <?php
 
 use App\Facades\GetApiData;
+use App\Jobs\TestJob;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,3 +29,15 @@ Route::prefix('admin')->middleware('role:admin','auth' )->name('admin.')->namesp
     Route::resource('pictures','PictureController');
 });
 
+
+
+
+Route::get('job1', function(){
+    TestJob::dispatch('JOB1')
+        ->delay(now()->addMinutes(1));
+    return '';
+});
+Route::get('job2', function(){
+    TestJob::dispatch('JOB2');
+    return '';
+});
